@@ -23,6 +23,7 @@
         private static int nextId = 1000;      // unique skater id
         private final int MAX = 10;         //max number for array
         private final int MtoS = 60;   //number that converts minutes to seconds
+        private final double DISTANCE = 5000;  //distance of the race
  	
  	// ********** instance variable **********
  	
@@ -33,8 +34,11 @@
         private int amountTimes;       //variable for amount of times in the array
         private String sTimes;       //contains string for the times
         private int averageSecondTime;     //variable for average time of all the races
-        private int totalSeconds;
-        private String averageTime;
+        private int totalSeconds;       //total number of seconds in the array
+        private String averageTime;     //average time of the races
+        private double averageSingleSpeedMS;  //average of a singe speed in m/s
+        private double totalSpeed;        //all speeds added up
+        private double averageSpeed;     //average of all speeds
         
         
  	// ********** constructors ***********
@@ -94,6 +98,35 @@
              return(averageTime);
         } // end returnAverageTime
         
+        /********************************************************
+        * Purpose:        get average speed of one of the races
+        *         
+        * Interface:
+        *     in:         race number
+        *     out:        speed in km/h for single race
+        ********************************************************/
+        public double returnSingleSpeed (int num){
+            averageSingleSpeedMS = DISTANCE/secondsTime[num]; 
+                
+               return (averageSingleSpeedMS * 3.6);
+        } // end returnSingleSpeed
+        
+        /********************************************************
+        * Purpose:        returns average speed of all races
+        *         
+        * Interface:
+        *     in:         None
+        *     out:        Prints the id and times to consol window
+        ********************************************************/
+        public double returnAverageSpeed(){
+             for (int i = 0; i < amountTimes; i++){
+                 totalSpeed += this.returnSingleSpeed(i);
+             }//end of for loop
+             
+             averageSpeed = totalSpeed/amountTimes;
+                     
+             return(averageSpeed);
+        } // end returnAverageSpeed
         
  	// ********** mutators **********
  
