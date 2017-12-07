@@ -77,7 +77,7 @@
         ********************************************************/
         public void printSkaterData(){
              System.out.println("Skater: " + id); //prints id
-             System.out.println("Time: "); //header
+             System.out.print("Time: "); //header
              
              for (int i = 0; i < amountTimes; i++){
              System.out.print(time[i] + " "); //prints times

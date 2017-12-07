@@ -34,16 +34,17 @@ public class A2Client
 	
 	// ***** declaration of variables *****
             
-        String strin;    
+        String strin;  //string for times read in
         int counter = 0;
-        String newTime = "1:00";
+        String newTime = "1:00"; //default "new" time
 	
 	// ***** create objects *****
         
-        Skater[] skater = new Skater[SkaterMAX];
+        Skater[] skater = new Skater[SkaterMAX]; //creates new skater object array
         
 	// ***** create input stream *****
         
+            //creates reader to read in data
         BufferedReader fin = new BufferedReader(new FileReader("SkaterData.txt"));
         
 	// ***** Print Banner *****
@@ -54,39 +55,45 @@ public class A2Client
 		System.out.println("Assignment:  Assignment Two");
 		System.out.println("**********************************\n");
 		
-	// ***** get input *****
+	// ***** Main Body *****
 	 
-        strin = fin.readLine();
-        while(strin != null){
-            skater[counter] = new Skater(strin);
+        strin = fin.readLine(); //reads in new line and primes the loop
+        
+        while(strin != null){//EoF Loop
             
+            //creates new skater object
+            skater[counter] = new Skater(strin);
+            //prints the id and times
             skater[counter].printSkaterData();
             
-            System.out.println(skater[counter].returnSingleTime(0));
-            System.out.println(skater[counter].returnAverageTime());
+            //prints a single race time which was pre chosen as the first
+            System.out.println("First Time: " + skater[counter].returnSingleTime(0));
+            //prints average time out of all the races
+            System.out.println("Average Time: " + skater[counter].returnAverageTime());
             
+            //prints the speed during first race
+            System.out.print("First Race Speed: ");
             System.out.printf("%.2f", skater[counter].returnSingleSpeed(0));
             System.out.println(" km/h");
+            
+            //prints the average race speed
+            System.out.print("Average Race Speed: ");
             System.out.printf("%.2f", skater[counter].returnAverageSpeed());
             System.out.println(" km/h");
             
+            //adds new time which is predetermined as 1:00
             skater[counter].addTime(newTime);
             
+            //prints updated times
+            System.out.print("Updated Times For ");
             skater[counter].printSkaterData(); 
             
+            //creates divider between skaters
             System.out.println("\n**********************************\n");
              
-            counter++;
+            counter++;//ads
             strin = fin.readLine();
         }//end of EoF loop
-	
-	
-	// ***** processing *****
-	
-		
-	// ***** output *****
-	
-		
 
 	// ***** closing message *****
 	
