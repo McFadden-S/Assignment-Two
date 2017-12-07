@@ -22,16 +22,19 @@
  	
         private static int nextId = 1000;      // unique skater id
         private final int MAX = 10;         //max number for array
+        private final int MtoS = 60;   //number that converts minutes to seconds
  	
  	// ********** instance variable **********
  	
         private int id;       // Skater id number
         private int[] minutes = new int[MAX];  //array for minute times
         private int[] seconds = new int [MAX];  //array for seconds times
-        private int[] totalSeconds = new int [MAX]; //array for race time in seconds
+        private int[] secondsTime = new int [MAX]; //array for race time in seconds
         private int amountTimes;       //variable for amount of times in the array
         private String sTimes;       //contains string for the times
-        
+        private int averageSecondTime;     //variable for average time of all the races
+        private int totalSeconds;
+        private String averageTime;
         
         
  	// ********** constructors ***********
@@ -53,7 +56,7 @@
             
             minutes = raceTime.returnMinutes();
             seconds = raceTime.returnSeconds();
-            totalSeconds = raceTime.returnTotalSeconds();
+            secondsTime = raceTime.returnTotalSeconds();
             amountTimes = raceTime.returnAmountTimes();
             sTimes = t;
      } // end default constructor
@@ -65,13 +68,32 @@
         *         
         * Interface:
         *     in:         None
-        *     out:        None
+        *     out:        Prints the id and times to consol window
         ********************************************************/
         public void printSkaterData(){
              System.out.println("Skater: " + id);
-             System.out.print("Times: " + sTimes);
+             System.out.println("Times: " + sTimes);
    
-        } // end returnMinutes
+        } // end printSkaterData
+        
+        /********************************************************
+        * Purpose:        returns average time of races
+        *         
+        * Interface:
+        *     in:         None
+        *     out:        Prints the id and times to consol window
+        ********************************************************/
+        public String returnAverageTime(){
+             for (int i = 0; i < amountTimes; i++){
+                 totalSeconds += secondsTime[i];
+             }//end of for loop
+             
+             averageSecondTime = totalSeconds/amountTimes;
+             averageTime = (averageSecondTime/MtoS) + ":" + (averageSecondTime%MtoS);
+                     
+             return(averageTime);
+        } // end returnAverageTime
+        
         
  	// ********** mutators **********
  
