@@ -60,8 +60,11 @@ public class A2Client
             skater[counter] = new Skater(strin);
             skater[counter].printSkaterData();
             System.out.println(skater[counter].returnAverageTime());
-            System.out.println(skater[counter].returnSingleSpeed(0) + "km/h");
-            System.out.println(skater[counter].returnAverageSpeed() + "km/h");
+            System.out.printf("%.2f", skater[counter].returnSingleSpeed(0));
+            System.out.println(" km/h");
+            System.out.printf("%.2f", skater[counter].returnAverageSpeed());
+            System.out.println(" km/h");
+            
             counter++;
             strin = fin.readLine();
         }//end of EoF loop
