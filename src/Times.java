@@ -32,8 +32,8 @@
         private String[] tokens1;   //holds the seperated times
         private String[] tokens2;   //holds seperated time and minutes
         private int amountTimes; //amout of times for the skater
-        private String delim1 = "[ ] +";  //used to split time data into indiviudal times
-        private String delim2 = "[:] +";  //used to split time data into minutes and seconds
+        private String delim1 = "[ ]+";  //used to split time data into indiviudal times
+        private String delim2 = "[:]+";  //used to split time data into minutes and seconds
      
  	// ********** constructors ***********
  	
@@ -96,6 +96,17 @@
         public int[] returnTotalSeconds(){
              return totalSeconds;
         } // end returnTotalSeconds
+        
+        /********************************************************
+        * Purpose:        returns amount of times there are
+        *         
+        * Interface:
+        *     in:         none
+        *     out:        return amountTimes
+        ********************************************************/
+        public int returnAmountTimes(){
+             return amountTimes;
+        } // end returnAmountTimes
         
  	// ********** mutators **********
  

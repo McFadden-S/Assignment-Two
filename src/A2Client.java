@@ -9,37 +9,42 @@
 //                  adding times and getting indivdual time from race.
 //
 //
-// Input:           Input required will be which data the user would like
-//                  to see ie. average time, speed, adding times 
-//                  and getting indivdual time from race.
+// Input:           None
 //
-//  Output:         Will output the requested data
+//  Output:         Will output the data on the skaters as well as their 
+//                  average time, speed, adding times and getting indivdual 
+//                  time from race.
 // ***********************************************************************
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import javax.swing.*;
 import java.text.DecimalFormat;
 
 public class A2Client
 {  // begin class
-	public static void main(String args[]) throws FileNotFoundException
+	public static void main(String args[]) throws FileNotFoundException, IOException
 	{  // begin main
 	
         // ***** declaration of constants *****
+            
+            final int SkaterMAX =20;
 	
 	// ***** declaration of variables *****
             
-            BufferedReader fin = new BufferedReader(new FileReader("name of file"));
+        String strin;    
+        int counter = 0;
 	
 	// ***** create objects *****
-		
-		
+        
+        Skater[] skater = new Skater[SkaterMAX];
+        
 	// ***** create input stream *****
-	
-		//ConsoleReader console = new ConsoleReader(System.in);
-		
+        
+        BufferedReader fin = new BufferedReader(new FileReader("SkaterData.txt"));
+        
 	// ***** Print Banner *****
 	
 		System.out.println("**********************************");
@@ -49,7 +54,14 @@ public class A2Client
 		System.out.println("**********************************");
 		
 	// ***** get input *****
-	
+	 
+        strin = fin.readLine();
+        while(strin != null){
+            skater[counter] = new Skater(strin);
+            skater[counter].printSkaterData();
+            counter++;
+            strin = fin.readLine();
+        }//end of EoF loop
 	
 	
 	// ***** processing *****
@@ -61,7 +73,7 @@ public class A2Client
 
 	// ***** closing message *****
 	
-		System.out.println("end of processing");
+		System.out.println("\nend of processing");
 	
 	}  // end main	
 }  // end class

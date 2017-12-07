@@ -29,6 +29,8 @@
         private int[] minutes = new int[MAX];  //array for minute times
         private int[] seconds = new int [MAX];  //array for seconds times
         private int[] totalSeconds = new int [MAX]; //array for race time in seconds
+        private int amountTimes;       //variable for amount of times in the array
+        private String sTimes;       //contains string for the times
         
         
         
@@ -47,25 +49,28 @@
         public Skater(String t){
              id = nextId++;     // set id and increment for next instance
                  
-            Times time = new Times(t);    //creates object time which will process time data
+            Times raceTime = new Times(t);    //creates object time which will process time data
             
-            minutes = time.returnMinutes();
-            seconds = time.returnSeconds();
-            totalSeconds = time.returnTotalSeconds();
-            
+            minutes = raceTime.returnMinutes();
+            seconds = raceTime.returnSeconds();
+            totalSeconds = raceTime.returnTotalSeconds();
+            amountTimes = raceTime.returnAmountTimes();
+            sTimes = t;
      } // end default constructor
  	
  	// ********** accessors **********
  	
         /********************************************************
-        * Purpose:        returns minute array
+        * Purpose:        prints the skater's id number and race times
         *         
         * Interface:
-        *     in:         none
-        *     out:        return minutes
+        *     in:         None
+        *     out:        None
         ********************************************************/
         public void printSkaterData(){
-             return minutes;
+             System.out.println("Skater: " + id);
+             System.out.print("Times: " + sTimes);
+   
         } // end returnMinutes
         
  	// ********** mutators **********
