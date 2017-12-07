@@ -36,6 +36,7 @@ public class A2Client
             
         String strin;    
         int counter = 0;
+        String newTime = "1:00";
 	
 	// ***** create objects *****
         
@@ -51,20 +52,30 @@ public class A2Client
 		System.out.println("NAME:        McFadden");
 		System.out.println("Class:       CS30S");
 		System.out.println("Assignment:  Assignment Two");
-		System.out.println("**********************************");
+		System.out.println("**********************************\n");
 		
 	// ***** get input *****
 	 
         strin = fin.readLine();
         while(strin != null){
             skater[counter] = new Skater(strin);
+            
             skater[counter].printSkaterData();
+            
+            System.out.println(skater[counter].returnSingleTime(0));
             System.out.println(skater[counter].returnAverageTime());
+            
             System.out.printf("%.2f", skater[counter].returnSingleSpeed(0));
             System.out.println(" km/h");
             System.out.printf("%.2f", skater[counter].returnAverageSpeed());
             System.out.println(" km/h");
             
+            skater[counter].addTime(newTime);
+            
+            skater[counter].printSkaterData(); 
+            
+            System.out.println("\n**********************************\n");
+             
             counter++;
             strin = fin.readLine();
         }//end of EoF loop
@@ -79,7 +90,7 @@ public class A2Client
 
 	// ***** closing message *****
 	
-		System.out.println("\nend of processing");
+		System.out.println("end of processing");
 	
 	}  // end main	
 }  // end class
