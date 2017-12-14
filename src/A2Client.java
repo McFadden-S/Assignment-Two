@@ -45,7 +45,7 @@ public class A2Client
 	// ***** create input stream *****
         
             //creates reader to read in data
-        BufferedReader fin = new BufferedReader(new FileReader("SkaterData.txt"));
+        BufferedReader fin = new BufferedReader(new FileReader("skaterData.txt"));
         
 	// ***** Print Banner *****
 	
