@@ -1,3 +1,6 @@
+
+import java.text.DecimalFormat;
+
 /* **********************************************************
  * Programmer:      McFadden
  * Class:           CS30S
@@ -32,14 +35,9 @@
         private int[] NormalizedTime = new int [MAX]; //array for race time in seconds
         private String[] time = new String [MAX];      //array for times as a string
         private int amountTimes;       //variable for amount of times in the array
-        private int averageSecondTime;     //variable for average time of all the races
-        private int totalSeconds;       //total number of seconds in the array
-        private String averageTime;     //average time of the races
-        private double averageSingleSpeedMS;  //average of a singe speed in m/s
-        private double averageSingleSpeedKH;  //average of a singe speed in k/h 
-        private double totalSpeed;        //all speeds added up
-        private double averageSpeed;     //average of all speeds
         
+        //formats numbers to stop at two decimals
+        private DecimalFormat formatter = new DecimalFormat("#0.00"); 
         
  	// ********** constructors ***********
         
@@ -75,15 +73,18 @@
         *     in:         None
         *     out:        Prints the id and times to consol window
         ********************************************************/
-        public void printSkaterData(){
-             System.out.println("Skater: " + id); //prints id
-             System.out.print("Time: "); //header
+        public String returnSkaterData(){
+            String bannerOut = ""; 
+            bannerOut += "Skater: " + id; //prints id
+            bannerOut += "\n"; //creates new lines
+            bannerOut += "Times: "; //header
              
              for (int i = 0; i < amountTimes; i++){
-             System.out.print(time[i] + " "); //prints times
+             bannerOut += time[i] + " "; //prints times
              }//end of for loop
              
-             System.out.print("\n"); //creates new lines
+             bannerOut += "\n"; //creates new lines
+             return(bannerOut);
         } // end printSkaterData
         
          /********************************************************
@@ -93,8 +94,8 @@
         *     in:         race number
         *     out:        time for single race
         ********************************************************/
-        public String returnSingleTime (int num){
-               return (time[num]); //returns single time
+        public String returnSingleTime (int num){   
+            return (time[num]); //returns single time
         } // end returnSingleSpeed
         
         /********************************************************
@@ -105,7 +106,11 @@
         *     out:        Prints the id and times to consol window
         ********************************************************/
         public String returnAverageTime(){
-             for (int i = 0; i < amountTimes; i++){
+            String averageTime;     //average time of the races
+            int averageSecondTime;     //variable for average time of all the races
+            int totalSeconds = 0;       //total number of seconds in the array
+            
+            for (int i = 0; i < amountTimes; i++){
                  totalSeconds += NormalizedTime[i]; //creates running total
              }//end of for loop
              
@@ -124,6 +129,9 @@
         *     out:        speed in km/h for single race
         ********************************************************/
         public double returnSingleSpeed (int num){
+            double averageSingleSpeedMS;  //average of a singe speed in m/s
+            double averageSingleSpeedKH;  //average of a singe speed in k/h 
+            
             //finds the speed in m/s
             averageSingleSpeedMS = DISTANCE/NormalizedTime[num];
             //converst m/s to km/h
@@ -140,6 +148,10 @@
         *     out:        Prints the id and times to consol window
         ********************************************************/
         public double returnAverageSpeed(){
+            double totalSpeed = 0;        //all speeds added up
+            double averageSpeed;     //average of all speeds
+            
+            
              for (int i = 0; i < amountTimes; i++){
                  //creats running total for speed
                  totalSpeed += this.returnSingleSpeed(i);
@@ -149,6 +161,33 @@
                      
              return(averageSpeed); //returns average speed
         } // end returnAverageSpeed
+        
+        /********************************************************
+        * Purpose:        get time of one of the races
+        *         
+        * Interface:
+        *     in:         race number
+        *     out:        time for single race
+        ********************************************************/
+        public String toString (){
+            String info = "";
+            //prints the id and times
+            info += this.returnSkaterData();
+            //prints a single race time which was pre chosen as the first
+            info += ("First Time: " + this.returnSingleTime(0) + "\n");
+            //prints average time out of all the races
+            info += ("Average Time: " + this.returnAverageTime() + "\n");
+            
+            //prints the speed during first race
+            info += ("First Race Speed: ");
+            info += (formatter.format(this.returnSingleSpeed(0)) + " km/h \n");
+            
+            //prints the average race speed
+            info += ("Average Race Speed: ");
+            info += (formatter.format(this.returnAverageSpeed()) + " km/h \n");
+
+            return info;
+        } // end returnSingleSpeed
         
  	// ********** mutators **********
         

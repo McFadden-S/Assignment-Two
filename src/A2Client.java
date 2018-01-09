@@ -30,7 +30,7 @@ public class A2Client
 	
         // ***** declaration of constants *****
             
-            final int SkaterMAX =20;
+            final int SkaterMAX = 20;
 	
 	// ***** declaration of variables *****
             
@@ -63,30 +63,15 @@ public class A2Client
             
             //creates new skater object
             skater[counter] = new Skater(strin);
-            //prints the id and times
-            skater[counter].printSkaterData();
             
-            //prints a single race time which was pre chosen as the first
-            System.out.println("First Time: " + skater[counter].returnSingleTime(0));
-            //prints average time out of all the races
-            System.out.println("Average Time: " + skater[counter].returnAverageTime());
-            
-            //prints the speed during first race
-            System.out.print("First Race Speed: ");
-            System.out.printf("%.2f", skater[counter].returnSingleSpeed(0));
-            System.out.println(" km/h");
-            
-            //prints the average race speed
-            System.out.print("Average Race Speed: ");
-            System.out.printf("%.2f", skater[counter].returnAverageSpeed());
-            System.out.println(" km/h");
+            System.out.println(skater[counter].toString());
             
             //adds new time which is predetermined as 1:00
             skater[counter].addTime(newTime);
             
             //prints updated times
             System.out.print("Updated Times For ");
-            skater[counter].printSkaterData(); 
+            System.out.println(skater[counter].returnSkaterData());
             
             //creates divider between skaters
             System.out.println("\n**********************************\n");
