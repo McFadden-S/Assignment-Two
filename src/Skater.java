@@ -163,11 +163,11 @@ import java.text.DecimalFormat;
         } // end returnAverageSpeed
         
         /********************************************************
-        * Purpose:        get time of one of the races
+        * Purpose:        Overrides toString to return all info
         *         
         * Interface:
-        *     in:         race number
-        *     out:        time for single race
+        *     in:         None
+        *     out:        string of info
         ********************************************************/
         public String toString (){
             String info = "";
@@ -187,7 +187,7 @@ import java.text.DecimalFormat;
             info += (formatter.format(this.returnAverageSpeed()) + " km/h \n");
 
             return info;
-        } // end returnSingleSpeed
+        } // end toString
         
  	// ********** mutators **********
         
