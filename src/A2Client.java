@@ -30,17 +30,19 @@ public class A2Client
 	
         // ***** declaration of constants *****
             
-            final int SkaterMAX = 20;
+            final int SkaterMAX = 20; //max amount of skater
 	
 	// ***** declaration of variables *****
             
         String strin;  //string for times read in
-        int counter = 0;
+        int counter = 0; //counts loop, used for addressing array
         String newTime = "1:00"; //default "new" time
 	
 	// ***** create objects *****
         
         Skater[] skater = new Skater[SkaterMAX]; //creates new skater object array
+        
+        ProgramInfo programInfo = new ProgramInfo();
         
 	// ***** create input stream *****
         
@@ -49,11 +51,7 @@ public class A2Client
         
 	// ***** Print Banner *****
 	
-		System.out.println("**********************************");
-		System.out.println("NAME:        McFadden");
-		System.out.println("Class:       CS30S");
-		System.out.println("Assignment:  Assignment Two");
-		System.out.println("**********************************\n");
+            System.out.println(programInfo.getBanner("Assignment Two"));
 		
 	// ***** Main Body *****
 	 
@@ -76,13 +74,13 @@ public class A2Client
             //creates divider between skaters
             System.out.println("\n**********************************\n");
              
-            counter++;//ads
+            counter++;//adds one
             strin = fin.readLine();
         }//end of EoF loop
 
 	// ***** closing message *****
 	
-		System.out.println("end of processing");
+            System.out.println(programInfo.getClosingMessage());
 	
 	}  // end main	
 }  // end class
